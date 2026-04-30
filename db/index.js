@@ -3,8 +3,9 @@ const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false   // 🔥 VERY IMPORTANT
-  }
+    rejectUnauthorized: false
+  },
+  family: 4   // 👈 FORCE IPv4 (THIS FIXES YOUR ERROR)
 });
 
 module.exports = pool;
