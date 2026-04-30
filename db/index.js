@@ -1,5 +1,10 @@
 const { Pool } = require('pg');
-const pool = new Pool({ 
-  connectionString: 'postgresql://moumitasaha@localhost/moumita_portfolio'
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false   // 🔥 VERY IMPORTANT
+  }
 });
+
 module.exports = pool;
